@@ -1,14 +1,20 @@
+#ifndef USER_H
+#define USER_H
+
 #include "String"
 
 class User
 {
 public: 
 	User(int id, std::string name, std::string email, std::string password);
+	virtual std::string getName() = 0;
 
-private:
+protected:
 	int id_;
 	std::string name_;
 	std::string email_;
-	std::string password;
+	std::string password_;
 };
+
+#endif
 
