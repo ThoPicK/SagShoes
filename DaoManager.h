@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "User.h"
+#include "Panier.h"
 
 #include "mysql_connection.h"
 #include <cppconn/driver.h>

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Erreurs">
+      <UniqueIdentifier>{bd73c18d-a2f4-466a-802f-a187f04c675e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -44,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="DaoManager.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="InvalidEmailOrPassword.h">
+      <Filter>Fichiers d%27en-tête\Erreurs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
