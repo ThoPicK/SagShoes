@@ -24,6 +24,7 @@
     <ClInclude Include="Article.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Commande.h" />
+    <ClInclude Include="DaoManager.h" />
     <ClInclude Include="Panier.h" />
     <ClInclude Include="Produit.h" />
     <ClInclude Include="User.h" />
@@ -35,6 +36,7 @@
     <ClCompile Include="Article.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Commande.cpp" />
+    <ClCompile Include="DaoManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Panier.cpp" />
     <ClCompile Include="Produit.cpp" />
