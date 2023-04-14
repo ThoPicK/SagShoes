@@ -22,6 +22,17 @@ public:
 	}
 };
 
+class InvalidIdProduit :
+	public exception
+{
+public:
+	const char* what() const throw () {
+		return "Id de produit invalide";
+	}
+};
+
+
+
 #endif 
 
 

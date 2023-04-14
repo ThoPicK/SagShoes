@@ -25,7 +25,7 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="Commande.h" />
     <ClInclude Include="DaoManager.h" />
-    <ClInclude Include="InvalidEmailOrPassword.h" />
+    <ClInclude Include="Errors.h" />
     <ClInclude Include="Panier.h" />
     <ClInclude Include="Produit.h" />
     <ClInclude Include="User.h" />

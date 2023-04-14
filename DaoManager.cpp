@@ -107,7 +107,7 @@ vector<Produit> DaoManager::getProduits() {
 	else {
 		while (res->next()) {
 			int id = res->getInt("id");
-			int stock = getStock(id);
+			map<int,int> stock = getStock(id);
 			Produit p(
 				id,
 				stock,
@@ -119,5 +119,23 @@ vector<Produit> DaoManager::getProduits() {
 			produits.push_back(p);
 		}
 	}
+	delete(stmt);
+	delete(res);
 	return produits;
+}
+
+map<int, int> DaoManager::getStock(int id) {
+	PreparedStatement* pstmt = connection_->prepareStatement("select * from stock where produit_id=?");
+	pstmt->setInt(1, id);
+	ResultSet* res = pstmt->executeQuery();
+	map<int, int> stock;
+	if (res == nullptr) {
+		throw InvalidIdProduit();
+	}
+	else {
+		while (res->next()) {
+			stock[res->getInt("taille")] = res->getInt("stock");
+		}
+	}
+	return stock;
 }

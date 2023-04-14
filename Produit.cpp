@@ -20,7 +20,7 @@ void Produit::setId(int id) {
 	this->id = id;
 }
 map<int, int> Produit::getStock() const {
-	return stock; 
+	return this->stock; 
 }
 void Produit::setStock(map<int, int> stock) {
 	this->stock = stock;
@@ -30,8 +30,8 @@ void Produit::setStock(int taille, int stock) {
 	this->stock[taille] = stock;
 }
 
-int Produit::getStock(int taille) {
-	return this->stock[taille];
+int Produit::getStock(int taille) const{
+	return this->stock.find(taille)->first;
 }
 
 float Produit::getPrix() const {

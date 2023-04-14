@@ -48,7 +48,7 @@
     <ClInclude Include="DaoManager.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="InvalidEmailOrPassword.h">
+    <ClInclude Include="Errors.h">
       <Filter>Fichiers d%27en-tête\Erreurs</Filter>
     </ClInclude>
   </ItemGroup>

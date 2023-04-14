@@ -41,6 +41,7 @@ public:
 	vector<Produit> getProduits(string name);
 	vector<Produit> getProduits();
 	void addArticle(Article a);
+	map<int, int> getStock(int id);
 
 
 
