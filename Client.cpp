@@ -7,6 +7,10 @@ Client::Client(int id, std::string name, std::string email, std::string password
 	panier_ = panier;
 }
 
+Client::Client(int id, std::string name, std::string email, std::string password) :
+	User(id, name, email, password){}
+
+
 Commande* Client::getCommandes()
 {
 	return nullptr;

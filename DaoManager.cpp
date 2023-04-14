@@ -41,29 +41,29 @@ void DaoManager::connect(string email, string password) {
 	}
 	else {
 		switch (res->getInt("statut")) {
-		case 0: //admin
-			connectedUser_ = new Administrateur(
-				res->getInt("id"),
-				res->getString("name").asStdString(),
-				res->getString("email").asStdString(),
-				res->getString("password").asStdString());
-			break;
-		case 1: //vendeur
+		case 0:{ //admin
+				connectedUser_ = new Administrateur(
+					res->getInt("id"),
+					res->getString("name").asStdString(),
+					res->getString("email").asStdString(),
+					res->getString("password").asStdString());
+				break; }
+		case 1: { //vendeur
 			connectedUser_ = new Vendeur(
 				res->getInt("id"),
 				res->getString("name").asStdString(),
 				res->getString("email").asStdString(),
 				res->getString("password").asStdString());
-			break;
-		case 2: //client
-			Panier * panier = getPanier(res->getInt("id"));
+			break; }
+		case 2: { //client
+			Panier* panier = getPanier(res->getInt("id"));
 			connectedUser_ = new Client(
 				res->getInt("id"),
 				res->getString("name").asStdString(),
 				res->getString("email").asStdString(),
 				res->getString("password").asStdString(),
 				*panier);
-			break;
+			break; }
 		default:
 			break;
 		}
@@ -95,6 +95,27 @@ vector<Vendeur> DaoManager::getVendeurs() {
 		}
 	}
 	return vendeurs;
+}
+
+vector<Client> DaoManager::getClients() {
+	Statement* stmt = connection_->createStatement();
+	ResultSet* res = stmt->executeQuery("select * from users where statut= 2");
+	vector<Client> clients;
+	if (res == nullptr) {
+		throw SQLError();
+	}
+	else {
+		while (res->next()) {
+			Client c(
+				res->getInt("id"),
+				res->getString("name"),
+				res->getString("email"),
+				res->getString("password")
+			);
+			clients.push_back(c);
+		}
+	}
+	return clients;
 }
 
 vector<Produit> DaoManager::getProduits() {
@@ -138,4 +159,17 @@ map<int, int> DaoManager::getStock(int id) {
 		}
 	}
 	return stock;
+}
+
+User* DaoManager::getConnectedUser() {
+	return connectedUser_;
+}
+
+void DaoManager::addClient(Client c) {
+	PreparedStatement* pstmt = connection_->prepareStatement("insert into table user values (?,?,?,?,2)");
+	pstmt->setInt(1, c.getID());
+	pstmt->setString(2, c.getName());
+	pstmt->setString(3, c.getEmail());
+	pstmt->setString(4, c.getPassword());
+	pstmt->execute();
 }

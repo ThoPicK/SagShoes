@@ -7,6 +7,7 @@
 #include "Vendeur.h"
 #include "Panier.h"
 #include "Article.h"
+#include "Client.h"
 
 #include "mysql_connection.h"
 #include <cppconn/driver.h>

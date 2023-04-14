@@ -2,14 +2,10 @@
 using namespace std;
 
 
-Produit::Produit(int id, map<int,int> stock, float prix, float prixLivraison, std::string nom, std::string description): ):
+Produit::Produit(int id, map<int,int> stock, float prix, float prixLivraison, std::string nom, std::string description):
 	id(id), stock(stock), prix(prix), prixlivraison(prixLivraison), nom(nom), description(description){}
 
 Produit::Produit()
-{
-}
-
-Produit::Produit(int id, map<int, int> stock, float prix, float prixLivraison, std::string nom, std::string description)
 {
 }
 

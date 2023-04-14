@@ -10,6 +10,7 @@ class Client :
 {
 public:
     Client(int id, std::string name, std::string email, std::string password, Panier panier);
+    Client(int id, std::string name, std::string email, std::string password);
     Commande* getCommandes();
     void addToCart(Produit p,double taille,int qunatite);
     void order();
