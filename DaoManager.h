@@ -4,7 +4,9 @@
 #include <iostream>
 
 #include "User.h"
+#include "Vendeur.h"
 #include "Panier.h"
+#include "Article.h"
 
 #include "mysql_connection.h"
 #include <cppconn/driver.h>
@@ -29,6 +31,18 @@ public:
 	void disconnect();
 	User* getConnectedUser();
 	Panier* getPanier(int id);
+	vector<Vendeur> getVendeurs();
+	vector<Client> getClients();
+	void addClient(Client c);
+	void addVendeur(Vendeur v);
+	void deleteUser(int id);
+	vector<Produit> getProduits(int vendeur_id);
+	vector<Commande> getCommandes(int client_id);
+	vector<Produit> getProduits(string name);
+	vector<Produit> getProduits();
+	void addArticle(Article a);
+
+
 
 };
 

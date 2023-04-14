@@ -1,6 +1,9 @@
 #include "DaoManager.h"
-#include"Administrateur.h"
-#include "InvalidEmailOrPassword.h"
+#include"User.h"
+#include "Client.h"
+#include "Vendeur.h"
+#include "Administrateur.h"
+#include "Errors.h"
 
 DaoManager* DaoManager::getInstance()
 {
@@ -71,4 +74,50 @@ void DaoManager::connect(string email, string password) {
 
 Panier* DaoManager::getPanier(int id) {
 	//récupération des articles du panier sur la base de données
+}
+
+vector<Vendeur> DaoManager::getVendeurs() {
+	Statement* stmt = connection_->createStatement();
+	ResultSet* res = stmt->executeQuery("select * from users where statut= 1");
+	vector<Vendeur> vendeurs;
+	if (res == nullptr) {
+		throw SQLError();
+	}
+	else {
+		while (res->next()) {
+			Vendeur v(
+				res->getInt("id"),
+				res->getString("name"),
+				res->getString("email"),
+				res->getString("password")
+			);
+			vendeurs.push_back(v);
+		}
+	}
+	return vendeurs;
+}
+
+vector<Produit> DaoManager::getProduits() {
+	Statement* stmt = connection_->createStatement();
+	ResultSet* res = stmt->executeQuery("select * from produit");
+	vector<Produit> produits;
+	if (res == nullptr) {
+		throw SQLError();
+	}
+	else {
+		while (res->next()) {
+			int id = res->getInt("id");
+			int stock = getStock(id);
+			Produit p(
+				id,
+				stock,
+				res->getDouble("prix"),
+				res->getDouble("prixLivraison"),
+				res->getString("name"),
+				res->getString("descrpiption")
+			);
+			produits.push_back(p);
+		}
+	}
+	return produits;
 }

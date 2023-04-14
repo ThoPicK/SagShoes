@@ -2,14 +2,14 @@
 using namespace std;
 
 
-Produit::Produit(int id, int stock, float prix, float prixLivraison, std::string nom, std::string description): ):
+Produit::Produit(int id, map<int,int> stock, float prix, float prixLivraison, std::string nom, std::string description): ):
 	id(id), stock(stock), prix(prix), prixlivraison(prixLivraison), nom(nom), description(description){}
 
 Produit::Produit()
 {
 }
 
-Produit::Produit(int id, int stock, float prix, float prixLivraison, std::string nom, std::string description)
+Produit::Produit(int id, map<int, int> stock, float prix, float prixLivraison, std::string nom, std::string description)
 {
 }
 
@@ -19,11 +19,19 @@ int Produit::getId()const {
 void Produit::setId(int id) {
 	this->id = id;
 }
-int Produit::getStock() const {
+map<int, int> Produit::getStock() const {
 	return stock; 
 }
-void Produit::setStock(int stock) {
+void Produit::setStock(map<int, int> stock) {
 	this->stock = stock;
+}
+
+void Produit::setStock(int taille, int stock) {
+	this->stock[taille] = stock;
+}
+
+int Produit::getStock(int taille) {
+	return this->stock[taille];
 }
 
 float Produit::getPrix() const {

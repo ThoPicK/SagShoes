@@ -1,6 +1,6 @@
 #pragma once
-#ifndef InvalidEmailOrPassword_H
-#define InvalidEmailOrPassword_H
+#ifndef Errors_H
+#define Errors_H
 #include<exception>
 #include<string>
 using namespace std;
@@ -13,7 +13,16 @@ public:
 	}
 };
 
-#endif // !InvalidEmailOrPassword_H
+class SQLError :
+	public exception
+{
+public:
+	const char* what() const throw () {
+		return "Erreur SQL";
+	}
+};
+
+#endif 
 
 
 
