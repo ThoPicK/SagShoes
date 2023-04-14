@@ -12,9 +12,9 @@ using namespace std;
 
 int main()
 {
-	DaoManager* dao = DaoManager::getInstance();
-
+	DaoManager* dao = DaoManager::GetInstance();
 	Client c(1, "test", "test@test.ca", "password");
-
-	dao->addClient(c);
+	//dao->addClient(c);
+	vector<Client> clients = dao->getClients();
+	cout << clients.front().getEmail() << endl;
 }

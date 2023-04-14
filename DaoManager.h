@@ -18,7 +18,7 @@ using namespace sql;
 
 class DaoManager
 {
-private:
+protected:
 	DaoManager();
 
 	static DaoManager* instance_;
@@ -27,7 +27,7 @@ private:
 	User* connectedUser_;
 
 public:
-	static DaoManager* getInstance();
+	static DaoManager* GetInstance();
 	void connect(string email, string password);
 	void disconnect();
 	User* getConnectedUser();
@@ -47,5 +47,7 @@ public:
 
 
 };
+
+
 
 #endif
