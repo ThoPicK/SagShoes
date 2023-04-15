@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 
+class Statut;
+
 class Commande {
 private:
     int id;
