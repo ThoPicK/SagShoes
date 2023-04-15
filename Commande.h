@@ -19,7 +19,7 @@ public:
     double getMontant();
     void afficherDetails();
     void payerCommande();
-    void setExpedie();
+    void setEnCours();
     void setLivre();
 };
 

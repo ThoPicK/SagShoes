@@ -2,10 +2,11 @@
 #define STATUT_H
 #include "Commande.h"
 #include <string>
+
 class Commande;
 
 class Statut {
-private:
+protected: 
     std::string etat;
 
 public:
@@ -17,22 +18,21 @@ public:
 
 class EnPreparation : public Statut {
 public:
+    EnPreparation();
     void Handle(Commande& commande) override;
 };
 
 class EnCours : public Statut {
 public:
-    void Handle(Commande& commande) override;
-};
-
-class Expedie : public Statut {
-public:
+    EnCours();
     void Handle(Commande& commande) override;
 };
 
 class Livre : public Statut {
 public:
+    Livre();
     void Handle(Commande& commande) override;
 };
+
 
 #endif 

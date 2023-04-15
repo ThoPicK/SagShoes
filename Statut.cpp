@@ -3,71 +3,43 @@
 #include <iostream>
 #include <string>
 
-class Statut {
-public:
-    virtual void Handle(Commande& commande) = 0;
-    virtual std::string getEtat() = 0;
-    virtual void afficherEtat() = 0;
-};
 
-class EnPreparation : public Statut {
-public:
-    void Handle(Commande& commande) override {
-        commande.afficherDetails();
-        std::cout << "Statut de la commande : En préparation" << std::endl;
-    }
+void Statut::Handle(Commande& commande) {
+    commande.afficherDetails();
+    std::cout << "Statut de la commande : " << etat << std::endl;
+}
 
-    std::string getEtat() override {
-        return "En préparation";
-    }
+std::string Statut::getEtat() {
+    return etat;
+}
 
-    void afficherEtat() override {
-        std::cout << "Statut de la commande : En préparation" << std::endl;
-    }
-};
+void Statut::afficherEtat() {
+    std::cout << "Statut de la commande : " << etat << std::endl;
+}
 
-class EnCours : public Statut {
-public:
-    void Handle(Commande& commande) override {
-        commande.payerCommande();
-        std::cout << "Statut de la commande : En cours" << std::endl;
-    }
+EnPreparation::EnPreparation() {
+    etat = "En préparation";
+}
 
-    std::string getEtat() override {
-        return "En cours";
-    }
+void EnPreparation::Handle(Commande& commande) {
+    commande.afficherDetails();
+    std::cout << "Statut de la commande : " << etat << std::endl;
+}
 
-    void afficherEtat() override {
-        std::cout << "Statut de la commande : En cours" << std::endl;
-    }
-};
+EnCours::EnCours() {
+    etat = "En cours";
+}
 
-class Expedie : public Statut {
-public:
-    void Handle(Commande& commande) override {
-        std::cout << "Statut de la commande : Expédiée" << std::endl;
-    }
+void EnCours::Handle(Commande& commande) {
+    commande.payerCommande();
+    std::cout << "Statut de la commande : " << etat << std::endl;
+}
 
-    std::string getEtat() override {
-        return "Expédiée";
-    }
+Livre::Livre() {
+    etat = "Livrée";
+}
 
-    void afficherEtat() override {
-        std::cout << "Statut de la commande : Expédiée" << std::endl;
-    }
-};
+void Livre::Handle(Commande& commande) {
+    std::cout << "Statut de la commande : " << etat << std::endl;
+}
 
-class Livre : public Statut {
-public:
-    void Handle(Commande& commande) override {
-        std::cout << "Statut de la commande : Livrée" << std::endl;
-    }
-
-    std::string getEtat() override {
-        return "Livrée";
-    }
-
-    void afficherEtat() override {
-        std::cout << "Statut de la commande : Livrée" << std::endl;
-    }
-};

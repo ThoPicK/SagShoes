@@ -35,10 +35,10 @@ void Commande::payerCommande() {
     std::cout << "Paiement effectué pour la commande #" << id << std::endl;
 }
 
-void Commande::setExpedie() {
+void Commande::setEnCours() {
     statut->Handle(*this); 
     delete statut; 
-    statut = new Expedie(); 
+    statut = new EnCours(); 
 }
 
 void Commande::setLivre() {
