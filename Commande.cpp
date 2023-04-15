@@ -6,6 +6,7 @@ Commande::Commande(int commandeId, std::vector<int> commandeItems, double comman
     id = commandeId;
     items = commandeItems;
     montant = commandeMontant;
+    statut = new EnPreparation();
 }
 
 int Commande::getId() {
@@ -32,4 +33,16 @@ void Commande::afficherDetails() {
 void Commande::payerCommande() {
     // Paiement de la commande
     std::cout << "Paiement effectué pour la commande #" << id << std::endl;
+}
+
+void Commande::setExpedie() {
+    statut->Handle(*this); 
+    delete statut; 
+    statut = new Expedie(); 
+}
+
+void Commande::setLivre() {
+    statut->Handle(*this); 
+    delete statut; 
+    statut = new Livre(); 
 }

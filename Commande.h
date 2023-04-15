@@ -1,8 +1,8 @@
-#pragma once
-
 #ifndef COMMANDE_H
 #define COMMANDE_H
 
+#include "Statut.h"
+#include <iostream>
 #include <vector>
 
 class Commande {
@@ -10,6 +10,7 @@ private:
     int id;
     std::vector<int> items;
     double montant;
+    Statut* statut;
 
 public:
     Commande(int commandeId, std::vector<int> commandeItems, double commandeMontant);
@@ -18,6 +19,8 @@ public:
     double getMontant();
     void afficherDetails();
     void payerCommande();
+    void setExpedie();
+    void setLivre();
 };
 
 #endif
