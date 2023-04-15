@@ -4,6 +4,9 @@
 #include <string>
 
 
+Statut::Statut(){
+}
+
 void Statut::Handle(Commande& commande) {
     commande.afficherDetails();
     std::cout << "Statut de la commande : " << etat << std::endl;
