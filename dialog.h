@@ -1,7 +1,10 @@
-#ifndef DIALOG_H
-#define DIALOG_H
-
+#include<ui_dialog.h>
+#include "Produit.h"
+#include <vector>
+#include <QTableWidget>
+#include <QLabel>
 #include <QDialog>
+#include"ui_dialog.h"
 
 namespace Ui {
 class Dialog;
@@ -13,13 +16,19 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = nullptr);
+    void setProduit(const std::vector<Produit> &produits);
     ~Dialog();
 
-private slots:
-    void on_pushButton_clicked();
-
 private:
+
     Ui::Dialog *ui;
+    QTableWidget *tableWidget;
+    QLabel *idLabel;
+    QLabel *nomLabel;
+    QLabel *prixLabel;
+    QLabel *prixLivraisonLabel;
+    QLabel *descriptionLabel;
 };
 
-#endif // DIALOG_H
+#endif // PRODUCTTABLEWIDGET_H
+    // DIALOG_H

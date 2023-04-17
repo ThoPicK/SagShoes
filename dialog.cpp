@@ -1,21 +1,37 @@
-#include "dialog.h"
-#include "ui_dialog.h"
+#include<ui_dialog.h>
+#include "Produit.h"
+#include <vector>
+#include <QTableWidget>
+#include <QLabel>
+#include <QDialog>
+#include"ui_dialog.h"
 
-Dialog::Dialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Dialog)
-{
-    ui->setupUi(this);
+namespace Ui {
+class Dialog;
 }
 
-Dialog::~Dialog()
+class Dialog : public QDialog
 {
-    delete ui;
-}
+    Q_OBJECT
+
+public:
+    explicit Dialog(QWidget *parent = nullptr);
+    void setProduit(const std::vector<Produit> &produits);
+    ~Dialog();
+
+private:
+
+    Ui::Dialog *ui;
+    QTableWidget *tableWidget;
+    QLabel *idLabel;
+    QLabel *nomLabel;
+    QLabel *prixLabel;
+    QLabel *prixLivraisonLabel;
+    QLabel *descriptionLabel;
+};
+
+#endif // PRODUCTTABLEWIDGET_H
+    // DIALOG_H
 
 
-void Dialog::on_pushButton_clicked()
-{
-
-}
 

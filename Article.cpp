@@ -22,3 +22,4 @@ double Article::getTaille() const {
 void Article::setTaille(double taille) {
 	this->taille = taille;
 }
+
